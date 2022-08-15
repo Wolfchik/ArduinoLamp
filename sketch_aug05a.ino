@@ -1,11 +1,14 @@
 #include <microLED.h>   // подключаем библу
+#include <SoftwareSerial.h>
 microLED < 6, 3, -1, LED_WS2812, ORDER_GRB > strip;
 
 byte mode;
 
+SoftwareSerial bt (4, 5);
+
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  bt.begin(9600);
   strip.setBrightness(255);
   strip.clear();
   strip.show();
@@ -20,9 +23,9 @@ void setup() {
 }
 
 void BluetoothTick() {
-  if (Serial.available()) {
-    int val = Serial.parseInt();
-    Serial.println(val);
+  if (bt.available()) {
+    int val = bt.parseInt();
+    //Serial.println(val); //Дебаг
     switch (val) {
       case 0: 
         mode = 0;
