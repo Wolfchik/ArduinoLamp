@@ -70,7 +70,15 @@ void BluetoothTick() {
         mode = 12;
         break;
     }
+    if (val > 14 and val < 256) {
+      strip.setBrightness(val);
+    }
   }
+}
+
+void mode0() {
+  BluetoothTick();
+  strip.clear();
 }
 
 void mode1() {
@@ -584,7 +592,7 @@ void mode12() {
 
 void loop() {
   switch (mode) {
-    case 0: BluetoothTick();
+    case 0: mode0();
       break;
     case 1: mode1();
       break;
