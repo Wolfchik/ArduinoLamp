@@ -1,6 +1,9 @@
 #include <microLED.h>   // подключаем библу
 #include <SoftwareSerial.h>
-microLED < 6, 3, -1, LED_WS2812, ORDER_GRB > strip;
+
+int led_num = 6; //Настройки - Количество адресных светодиодов
+
+microLED < led_num, 3, -1, LED_WS2812, ORDER_GRB > strip;
 
 byte mode;
 
